@@ -1,0 +1,18 @@
+<?php
+
+namespace App\Http\Controllers;
+
+use App\Models\User;
+use Illuminate\Http\Request;
+
+class HomeController extends Controller
+{
+    public function index()
+    {
+        if ( ! auth()->check() ) {
+            auth()->login(User::first());
+        }
+
+        return view('dashboard');
+    }
+}
