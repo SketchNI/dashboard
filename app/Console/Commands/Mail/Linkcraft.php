@@ -75,6 +75,7 @@ class Linkcraft extends Command
             }
 
             event(new Email("linkcraft", array_reverse($mails)));
+            Cache::put('linkcraft', json_encode($mails), Carbon::now()->addMinutes(2));
 
             $this->info('[Linkcraft] Mail fetched successfully.');
             return 0;

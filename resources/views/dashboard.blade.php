@@ -13,15 +13,15 @@
         <div id="app">
             <div class="p-4 h-screen">
                 <div class="h-full grid grid-cols-4 grid-rows-6 gap-4">
-                    <sketchni class="row-span-4 overflow-auto"></sketchni>
+                    <sketchni cdata="{{ cache('sketchni') }}" class="row-span-4 overflow-auto"></sketchni>
 
-                    <outlook class="row-span-4 overflow-auto"></outlook>
+                    <outlook cdata="{{ cache('outlook') }}" class="row-span-4 overflow-auto"></outlook>
 
-                    <linkcraft class="row-span-4 overflow-auto"></linkcraft>
+                    <linkcraft cdata="{{ cache('linkcraft') }}" class="row-span-4 overflow-auto"></linkcraft>
 
-                    <ukblabberbox class="row-span-4 overflow-auto"></ukblabberbox>
+                    <ukblabberbox cdata="{{ cache('ukblabberbox') }}" class="row-span-4 overflow-auto"></ukblabberbox>
 
-                    <twitch class="col-span-4 row-span-2"></twitch>
+                    <twitch cdata="{{ cache('twitch') }}" class="col-span-4 row-span-2"></twitch>
                 </div>
             </div>
         </div>

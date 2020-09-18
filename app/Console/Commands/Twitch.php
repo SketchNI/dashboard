@@ -2,9 +2,11 @@
 
 namespace App\Console\Commands;
 
+use Carbon\Carbon;
 use Exception;
 use GuzzleHttp\Exception\GuzzleException;
 use Illuminate\Console\Command;
+use Illuminate\Support\Facades\Cache;
 use NewTwitchApi\HelixGuzzleClient;
 use NewTwitchApi\NewTwitchApi;
 
@@ -69,6 +71,7 @@ class Twitch extends Command
             }
 
             event(new \App\Events\Twitch($data));
+            Cache::put('twitch', json_encode($data), Carbon::now()->addMinutes(2));
 
             $this->info('[Twitch] Fetched live channels.');
             return 0;

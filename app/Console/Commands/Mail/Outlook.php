@@ -6,6 +6,7 @@ use App\Events\Email;
 use Carbon\Carbon;
 use Exception;
 use Illuminate\Console\Command;
+use Illuminate\Support\Facades\Cache;
 
 class Outlook extends Command
 {
@@ -73,6 +74,7 @@ class Outlook extends Command
             }
 
             event(new Email("outlook", array_reverse($mails)));
+            Cache::put('outlook', json_encode($mails), Carbon::now()->addMinutes(2));
 
             $this->info('[Outlook] Mail fetched successfully.');
             return 0;

@@ -24,12 +24,18 @@ import Heading from "./sub/heading";
 export default {
     name: "Twitch",
 
+    props: ['cdata'],
+
     components: {
         Heading
     },
 
     created() {
         console.debug(`Loading: Component ${this.$options.name} loaded.`);
+
+        if (this.cdata) {
+            this.data = JSON.parse(this.cdata);
+        }
 
         window.Echo.private(`App.Models.User.${window.user.id}`)
             .listen('.twitch', res => {

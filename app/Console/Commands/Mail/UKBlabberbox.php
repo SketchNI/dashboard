@@ -6,6 +6,7 @@ use App\Events\Email;
 use Carbon\Carbon;
 use Exception;
 use Illuminate\Console\Command;
+use Illuminate\Support\Facades\Cache;
 
 class UKBlabberbox extends Command
 {
@@ -73,6 +74,7 @@ class UKBlabberbox extends Command
             }
 
             event(new Email("ukblabberbox", array_reverse($mails)));
+            Cache::put('ukblabberbox', json_encode($mails), Carbon::now()->addMinutes(2));
 
             $this->info('[UKBlabberbox] Mail fetched successfully.');
             return 0;

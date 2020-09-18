@@ -75,6 +75,7 @@ class SketchNI extends Command
             }
 
             event(new Email("sketchni", array_reverse($mails)));
+            Cache::put('sketchni', json_encode($mails), Carbon::now()->addMinutes(2));
 
             $this->info('[SketchNI] Mail fetched successfully.');
             return 0;

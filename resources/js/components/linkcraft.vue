@@ -12,6 +12,8 @@ import Heading from "./sub/heading";
 export default {
     name: "Linkcraft",
 
+    props: ['cdata'],
+
     components: {
         Mail,
         Heading
@@ -19,6 +21,10 @@ export default {
 
     created() {
         console.debug(`Loading: Component ${this.$options.name} loaded.`);
+
+        if (this.cdata) {
+            this.data = JSON.parse(this.cdata);
+        }
 
         window.Echo.private(`App.Models.User.${window.user.id}`)
             .listen('.linkcraft', res => {
