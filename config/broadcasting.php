@@ -37,9 +37,9 @@ return [
             'app_id' => env('PUSHER_APP_ID'),
             'options' => [
                 'encrypted' => false,
-                'host' => "172.29.57.227",
+                'host' => env('BROADCAST_HOST'),
                 'port' => 8765,
-                'scheme' => 'http'
+                'scheme' => env('BROADCAST_SCHEME')
             ],
         ],
 
